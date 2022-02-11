@@ -22,7 +22,12 @@ def CartRemove(request,product_id):
     cart.remove(product)
     return redirect('Cart:cart_detail')
 
-def Cart_detail(request,id,slug):
-    product = get_object_or_404(Product, id=id, slug=slug, available=True)
-    cart_product_form = CartAddForm()
-    return render(request,'Cart/detail.html',{'cart_product_form':cart_product_form,'product':product})
+def Cart_detail(request):
+    cart = Cart(request)
+    for item in cart:
+        item['update_quantity_form'] = CartAddForm(initial={
+            'quantity': item['quantity'],
+            'override': True
+
+        })
+    return render(request,'Cart/detail.html',{'cart':cart})
