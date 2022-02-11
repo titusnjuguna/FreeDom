@@ -1,7 +1,5 @@
 from xml.dom.minidom import Document
 from django.conf import settings
-
-from engine.settings import MEDIA_ROOT
 from . import views
 from django.urls import path
 from django.conf.urls.static import static

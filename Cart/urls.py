@@ -1,4 +1,3 @@
-from xmlrpc.client import APPLICATION_ERROR
 from django.urls import path
 from . import views
 
