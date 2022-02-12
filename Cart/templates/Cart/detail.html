@@ -60,7 +60,7 @@ My Cart
 </table>
 <p class="#">
     <a href="{% url 'Shop:Product_List'%}" class="button-light" >Continue Shopping</a>
-    <a href="#" class="button">Check Out</a>
+    <a href="{% url 'Order:Create_order'%}" class="button">Check Out</a>
 </p>
 
 {% endblock%}
