@@ -4,3 +4,4 @@ migrations
 *.jpg
 *.jpeg
 *.png
+*.env
