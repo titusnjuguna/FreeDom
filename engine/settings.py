@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
+import braintree
 from pathlib import Path
 from dotenv import load_dotenv
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,13 +30,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
     'Shop',
     'Cart',
     'Order',
+    'Payments',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -74,7 +76,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'engine.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -84,7 +85,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -103,7 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -142,3 +141,10 @@ EMAIL_HOST_USER = os.getenv("MY_EMAIL")
 EMAIL_HOST_PASSWORD = os.getenv("PASSWORD")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+BRAINTREE_CONF = braintree.Configuration(
+braintree.Environment.Sandbox,
+os.getenv('BRAINTREE_MERCHANT_ID'),
+os.getenv('BRAINTREE_PUBLIC_KEY'),
+os.getenv('BRAINTREE_PRIVATE_KEY')
+)
