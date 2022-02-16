@@ -7,5 +7,6 @@ urlpatterns = [
     path('Cart/', include('Cart.urls', namespace='Cart')),
     path('orders/', include('Order.urls', namespace='Order')),
     path('Pay/', include('Payments.urls', namespace='Payments')),
+    path('Api/', include('Shop.api.urls',namespace='Api')),
     path('', include('Shop.urls', namespace='Shop')),
 ]
