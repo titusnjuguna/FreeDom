@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'Cart',
     'Order',
     'Payments',
+    'Users',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -90,7 +91,9 @@ DATABASES = {
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
 }
 
 
