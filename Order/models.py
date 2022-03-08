@@ -1,5 +1,6 @@
 from django.db import models
-from Shop.models import Product
+from Shop.models import Product,Store
+from Users.models import buyer
 # Create your models here.
 class Orders(models.Model):
     braintree_id = models.CharField(max_length=150, blank=True)
@@ -12,6 +13,8 @@ class Orders(models.Model):
     created = models.DateTimeField(auto_now_add= True)
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
+    store = models.ForeignKey(Store,on_delete= models.CASCADE , related_name='store_order')
+    customer = models.ForeignKey(buyer, on_delete= models.CASCADE)
 
     class Meta:
         ordering = ['-created',]

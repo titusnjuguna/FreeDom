@@ -1,8 +1,6 @@
-from hashlib import algorithms_available
-from tabnanny import verbose
-from traceback import print_exception
 from django.db import models
 from django.urls import reverse
+from Users.models import Seller
 
 
 # Create your models here.
@@ -43,4 +41,11 @@ class Product(models.Model):
         return self.name
     
     
-    
+class Store(models.Model):
+    id = models.UUIDField(primary_key=True)
+    name = models.CharField(max_length=100,unique= True)
+    owner = models.OneToOneField(Seller, on_delete= models.CASCADE, related_name='store_owner')
+
+    def __str__(self):
+        return self.name
+
