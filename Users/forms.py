@@ -1,38 +1,25 @@
-from .models import buyer,Seller
-from django.contrib.auth.forms import UserCreationForm
+from django import forms
 from django.contrib.auth.models import User
-from django.db import transaction
+from django.contrib.auth.forms import UserCreationForm
+from .models import Profile
 
-class SellerRegisterForm(UserCreationForm):
+
+class UserRegisterForm(UserCreationForm):
+    email = forms.EmailField()
+
     class Meta:
         model = User
-        fields = '__all__'
-        
-    @transaction.atomic
-    def save(self):
-        user = super().save(commit=False)
-        user.is_seller = True
-        user.save()
-        Seller.objects.create(user=user)
-        return user
+        fields = ['username', 'email', 'password1', 'password2']
+
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['username', 'email']
 
 
-class BuyerRegisterForm(UserCreationForm):
-    class Meta(UserCreationForm.Meta):
-        model=User
-       
-
-    def save(self):
-        user = super().save(commit=False)
-        user.is_buyer = True
-        if commit:
-            user.save()
-        return user
-
-
-
-
-
-
-
-
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['image']

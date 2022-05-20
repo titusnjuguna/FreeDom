@@ -8,8 +8,9 @@ app_name='Shop'
 
 urlpatterns =[
     path('', views.product_list,name='Product_List'),
-    path('<slug:category_slug>/', views.product_list, name='Product_List_category'),
+    path('<slug:category_slug>/', views.product_category, name='Product_category'),
     path('<int:id>/<slug:slug>/', views.product_detail, name='Product_Detail'),
+    
 ]
 if settings.DEBUG:
     urlpatterns += static(

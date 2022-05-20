@@ -30,4 +30,4 @@ def Cart_detail(request):
             'override': True
 
         })
-    return render(request,'Cart/detail.html',{'cart':cart})
+    return render(request,'Cart/cart.html',{'cart':cart})
