@@ -1,6 +1,5 @@
 from ast import Or
-from http import client
-from unittest import result
+
 import braintree
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings

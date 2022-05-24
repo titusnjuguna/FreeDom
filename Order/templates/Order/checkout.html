@@ -26,59 +26,59 @@
             					<label for="checkout-discount-input" class="text-truncate">Have a coupon? <span>Click here to enter your code</span></label>
             				</form>
             			</div><!-- End .checkout-discount -->
-            			<form action="#">
+            			<form action="{% url 'Order:Create_order'%}" method="POST">{% csrf_token %}
 		                	<div class="row">
 		                		<div class="col-lg-9">
 		                			<h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
-									{% for field in form.fields %}
+									
 		                				<div class="row">
 		                					<div class="col-sm-6">
 		                						<label>First Name *</label>
-		                						<input type="text" class="form-control" required>
+		                						<input type="text" name="F_name" class="form-control" required>
 		                					</div><!-- End .col-sm-6 -->
 
 		                					<div class="col-sm-6">
 		                						<label>Last Name *</label>
-		                						<input type="text" class="form-control" required>
+		                						<input type="text" name="L_name" class="form-control" required>
 		                					</div><!-- End .col-sm-6 -->
 		                				</div><!-- End .row -->
 
 	            						<label>Company Name (Optional)</label>
-	            						<input type="text" class="form-control">
+	            						<input type="text" name="company" class="form-control">
 
 	            						<label>Country *</label>
-	            						<input type="text" class="form-control" required>
+	            						<input type="text" name="country" class="form-control" required>
 
 	            						<label>Street address *</label>
-	            						<input type="text" class="form-control" placeholder="House number and Street name" required>
-	            						<input type="text" class="form-control" placeholder="Appartments, suite, unit etc ..." required>
+	            						<input type="text" name="house" class="form-control" placeholder="House number and Street name" required>
+	            						<input type="text" name="suite" class="form-control" placeholder="Appartments, suite, unit etc ..." required>
 
 	            						<div class="row">
 		                					<div class="col-sm-6">
 		                						<label>Town / City *</label>
-		                						<input type="text" class="form-control" required>
+		                						<input type="text" name="city" class="form-control" required>
 		                					</div><!-- End .col-sm-6 -->
 
 		                					<div class="col-sm-6">
 		                						<label>State / County *</label>
-		                						<input type="text" class="form-control" required>
+		                						<input type="text" name="state" class="form-control" required>
 		                					</div><!-- End .col-sm-6 -->
 		                				</div><!-- End .row -->
 
 		                				<div class="row">
 		                					<div class="col-sm-6">
 		                						<label>Postcode / ZIP *</label>
-		                						<input type="text" class="form-control" required>
+		                						<input type="text" name="Postcode" class="form-control" required>
 		                					</div><!-- End .col-sm-6 -->
 
 		                					<div class="col-sm-6">
 		                						<label>Phone *</label>
-		                						<input type="tel" class="form-control" required>
+		                						<input type="tel" name="Phone" class="form-control" required>
 		                					</div><!-- End .col-sm-6 -->
 		                				</div><!-- End .row -->
 
 	                					<label>Email address *</label>
-	        							<input type="email" class="form-control" required>
+	        							<input type="email" name="email" class="form-control" required>
 
 	        							<div class="custom-control custom-checkbox">
 											<input type="checkbox" class="custom-control-input" id="checkout-create-acc">
@@ -91,7 +91,7 @@
 										</div><!-- End .custom-checkbox -->
 
 	                					<label>Order notes (optional)</label>
-	        							<textarea class="form-control" cols="30" rows="4" placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
+	        							<textarea class="form-control" name="order_note" cols="30" rows="4" placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
 		                		</div><!-- End .col-lg-9 -->
 		                		<aside class="col-lg-3">
 		                			<div class="summary">
@@ -204,24 +204,20 @@
 										    </div><!-- End .collapse -->
 										</div><!-- End .card -->
 									</div><!-- End .accordion -->
-									<form method="POST" class="order-form">
-										{{form.as_p}}
-										<p><input type="submit" value="Place order"></p>
-										{% csrf_token %}
-									</form>
+									
 
 								<button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
-		                			<span class="btn-text"><a href="{% url 'Order:Create_order'%}">Place Order</a></span>
-		                			<span class="btn-hover-text"><a href="{% url 'Order:Create_order'%}">Proceed to Checkout</a></span>
+		                			<span class="btn-text">Place Order</span>
+		                			<span class="btn-hover-text">Proceed to Checkout</span>
 		                		</button></a>
 		                	</div><!-- End .summary -->
 		                </aside><!-- End .col-lg-3 -->
 		            </div><!-- End .row -->
-					{% csrf_token %}
+					
             	</form>
 	        </div><!-- End .container -->
         </div><!-- End .checkout -->
     </div><!-- End .page-content -->
 </main><!-- End .main -->
 
-{% endblock content%}
+{% endblock %}

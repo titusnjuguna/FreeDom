@@ -10,7 +10,7 @@
     <nav aria-label="breadcrumb" class="breadcrumb-nav">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'Shop:Product_List' %}">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Shop</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
             </ol>
@@ -58,7 +58,12 @@
                                         </div><!-- End .cart-product-quantity -->
                                     </td>
                                     <td class="total-col">$84.00</td>
-                                    <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
+                                    <td class="remove-col">
+                                        <form action="{% url 'Cart:Cart_Remove' product.id %}" method="POST">
+                                            {% csrf_token %}
+                                            <button class="btn-remove" type="submit" value="Remove"><i class="icon-close"></i></button>
+                                        
+                                        </form></td>
                                 </tr>
                                 {% endwith %}
                                 {% endfor %}

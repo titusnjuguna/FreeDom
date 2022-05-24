@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404, render
+from contextlib import redirect_stdout
+from django.shortcuts import get_object_or_404, redirect, render
 from Cart.forms import CartAddForm
 from .models import Category, Product
 
@@ -13,8 +14,7 @@ def product_list(request):
 def product_detail(request,id,slug):
     product = get_object_or_404(Product,slug=slug, id=id,available=True)
     cart_product_form = CartAddForm()
-    return render(request,'Shop/Product/product.html',{'product':product,'cart_product_form':cart_product_form})
-
+    return render(request,'Shop/Product/product.html', {'product': product,'cart_product_form':cart_product_form})
 
 def product_category(request, category_slug=None):
     category = None

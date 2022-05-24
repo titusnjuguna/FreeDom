@@ -1,5 +1,5 @@
 from django.db import models
-from Shop.models import Product,Store
+from Shop.models import Product
 
 # Create your models here.
 class Orders(models.Model):
@@ -13,8 +13,13 @@ class Orders(models.Model):
     created = models.DateTimeField(auto_now_add= True)
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
-    
-    
+    state = models.CharField(max_length=20, blank=True, null=True)
+    phone = models.IntegerField(blank=True, null=True)
+    house = models.CharField(max_length=100, blank=True, null=True)
+    apartment = models.CharField(max_length=100, blank=True, null=True)
+    order_note = models.TextField(max_length=200,blank=True,null=True)
+    company = models.CharField(max_length=20, blank=True, null=True)
+    country = models.CharField(max_length=30,blank=True, null=True)
 
     class Meta:
         ordering = ['-created',]
