@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 appdirs==1.4.3
 apturl==0.5.2
 asgiref==3.4.1
@@ -28,7 +27,6 @@ Django==3.2.5
 django-crispy-forms==1.12.0
 django-filter==2.4.0
 django-restframework==0.0.1
-=======
 amqp==5.0.9
 asgiref==3.5.0
 autopep8==1.6.0
@@ -43,7 +41,6 @@ click-didyoumean==0.3.0
 click-plugins==1.1.1
 click-repl==0.2.0
 Django==3.2
->>>>>>> e079d0046843dbdd86bae282f5c1787969f31d51
 djangorestframework==3.13.1
 duplicity==0.8.12.0
 entrypoints==0.3
