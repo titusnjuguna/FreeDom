@@ -71,7 +71,14 @@
 											</div><!-- End .header-menu -->
 										</div>
 									</li>
-									<li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+									{% if user.is_authenticated %}
+									<li><a href="{% url 'Users:Login'%}">Profile</a></li>
+									<li><a href="{% url 'Users:Register'%}">Logout</a></li>
+									{% else %}
+								
+									<li><a href="{% url 'Users:Login'%}" >Login</a></li>
+									<li><a href="{% url 'Users:Register'%}">Register</a></li>
+									{% endif %}
 								</ul>
 							</li>
 						</ul><!-- End .top-menu -->
@@ -585,7 +592,7 @@
 									<div class="tab-content" id="tab-content-5">
 										<div class="tab-pane fade show active" id="signin" role="tabpanel"
 											aria-labelledby="signin-tab">
-											<form action="#">
+											<form action="#" method="POST">
 												<div class="form-group">
 													<label for="singin-email">Username or email address *</label>
 													<input type="text" class="form-control" id="singin-email" name="singin-email"
@@ -632,18 +639,17 @@
 											</div><!-- End .form-choice -->
 										</div><!-- .End .tab-pane -->
 										<div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-											<form action="#">
-												<div class="form-group">
-													<label for="register-email">Your email address *</label>
-													<input type="email" class="form-control" id="register-email"
-														name="register-email" required>
-												</div><!-- End .form-group -->
-			
-												<div class="form-group">
-													<label for="register-password">Password *</label>
-													<input type="password" class="form-control" id="register-password"
-														name="register-password" required>
-												</div><!-- End .form-group -->
+											<form action="#" method="POST">
+												{% csrf_token %}
+												<fieldset>
+													<legend>
+														Register form
+													</legend>
+													{{ Register_form.as_p }}
+												
+												</fieldset>
+												
+												
 			
 												<div class="form-footer">
 													<button type="submit" class="btn btn-outline-primary-2">

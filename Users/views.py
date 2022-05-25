@@ -6,16 +6,15 @@ from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
 def register(request):
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
-        
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Cogratulatios!{username},Your account has been created! You are now able to log in')
-            return redirect('login')
+       Register_form = UserRegisterForm(request.POST)
+       if Register_form.is_valid():
+           Register_form.save()
+           username = Register_form.cleaned_data.get('username')
+           messages.success(request, f'Congratulations!{username},Your account has been created! You are now able to log in')
+           return redirect('Users:Login')
     else:
-        form = UserRegisterForm()
-    return render(request, 'Users/register.html', {'form': form})
+        Register_form = UserRegisterForm()
+    return render(request, 'Users/register.html', {'Register_form': Register_form})
 
 
 @login_required
