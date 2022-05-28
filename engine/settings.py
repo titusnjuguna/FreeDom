@@ -165,3 +165,5 @@ os.getenv('BRAINTREE_MERCHANT_ID'),
 os.getenv('BRAINTREE_PUBLIC_KEY'),
 os.getenv('BRAINTREE_PRIVATE_KEY')
 )
+
+#celery set up

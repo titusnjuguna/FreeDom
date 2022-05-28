@@ -2,7 +2,17 @@ from django.db import models
 from Shop.models import Product
 
 # Create your models here.
+PAYMENT_OPTIONS =(
+    ('mpesa','MPESA'),
+    ('direct bank transfer','DIRECT BANK TRANSFER'),
+    ('cash on delivery','CASH ON DELIVERY'),
+    ('paypal','PAYPAL'),
+    ('credit card','CREDIT CARD')
+
+
+)
 class Orders(models.Model):
+
     braintree_id = models.CharField(max_length=150, blank=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -14,12 +24,13 @@ class Orders(models.Model):
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
     state = models.CharField(max_length=20, blank=True, null=True)
-    phone = models.IntegerField(blank=True, null=True)
+    phone = models.CharField(max_length=15 , blank=True, null=True)
     house = models.CharField(max_length=100, blank=True, null=True)
     apartment = models.CharField(max_length=100, blank=True, null=True)
     order_note = models.TextField(max_length=200,blank=True,null=True)
     company = models.CharField(max_length=20, blank=True, null=True)
     country = models.CharField(max_length=30,blank=True, null=True)
+    payment_method = models.CharField(max_length=30, choices= PAYMENT_OPTIONS,default='mpesa')
 
     class Meta:
         ordering = ['-created',]
