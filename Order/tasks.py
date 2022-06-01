@@ -9,7 +9,7 @@ def order_created(order_id):
     subject = f'Order {order_id} has been received'
     message = f'Dear {order.first_name},\n\n' \
     f'You have successfully placed an order.' \
-    f'Your order ID is {order.id}.'
+    f'Your order ID is {order.id}. The order is ready for shipping. We will work hard to ensure the order is delivered on time'
     mail_sent = send_mail(subject,
-    message,'titusnjuguna59@gmail.com',[order.email])
+    message,'FreeDom Mall',[order.email])
     return mail_sent

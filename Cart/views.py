@@ -3,7 +3,7 @@ from django.views.decorators.http import require_POST
 from Shop.models import Product
 from .cart import Cart
 from .forms import CartAddForm
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 @require_POST
 def CartAdd(request,product_id):
@@ -15,13 +15,17 @@ def CartAdd(request,product_id):
         cart.add(product=product, quantity= cd['quantity'])
     return redirect('Cart:cart_detail')
 
+
 @require_POST
+
 def CartRemove(request,product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     cart.remove(product)
     return redirect('Cart:cart_detail')
 
+
+@login_required
 def Cart_detail(request):
     cart = Cart(request)
     for item in cart:

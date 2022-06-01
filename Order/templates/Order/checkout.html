@@ -28,52 +28,10 @@
 							<div class="row">
 								<div class="col-lg-9">
 									<h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
-									<div class="row">
-										<div class="col-sm-6">
-											<label>First Name *</label>
-											{{form.first_name}}
-										</div><!-- End .col-sm-6 -->
-										<div class="col-sm-6">
-											<label>Last Name *</label>
-											{{form.first_name}}
-		                				</div><!-- End .col-sm-6 -->
-		                			</div><!-- End .row -->
-	           						<label>Company Name (Optional)</label>
-									   {{form.company}}
-									<label>Country *</label>
-	            						{{form.country}}
-            						<label>Street address *</label>
-	            						{{form.apartment}}
-										{{form.house}}
-	            					<div class="row">
-										<div class="col-sm-6">
-											<label>Town / City *</label>
-											{{form.city}}
-		                				</div><!-- End .col-sm-6 -->
-
-	                					<div class="col-sm-6">
-											<label>State / County *</label>
-											{{form.state}}
-		                				</div><!-- End .col-sm-6 -->
-		                			</div><!-- End .row -->
-	                				<div class="row">
-										<div class="col-sm-6">
-											<label>Postcode / ZIP *</label>
-		                					{{form.postal_code}}
-		                				</div><!-- End .col-sm-6 -->
-
-		                				<div class="col-sm-6">
-											<label>Phone *</label>
-		                						{{form.phone}}
-		                				</div><!-- End .col-sm-6 -->
-		                			</div><!-- End .row -->
-	               					<label>Email address *</label>
-	        							{{form.email}}
-                					<label>Order notes (optional)</label>
-	        							{{form.order_note}}
-		                		</div><!-- End .col-lg-9 -->
+									{{form}}
 								<button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
-		                			Place Order
+		                			<span class="btn-text">Place Order</span>
+		                			<span class="btn-hover-text">Proceed to Checkout</span>
 								</button>
 						</form>
 					</div>

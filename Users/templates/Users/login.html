@@ -43,6 +43,19 @@
 
 
         }
+        .form-group > input{
+            width:100%;
+            outline-style:none;
+            height:30px;
+        }
+        .flex-link{
+            display:flex;
+        }
+        .flex1 , .flex2{
+             margin: 10px;
+
+        }
+
 
     </style>
 </head>
@@ -61,28 +74,38 @@
             <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
                 <form action="#" method="post">
                     {% csrf_token %}
-                    {% for field in Register_form %}
-                    <div class="form-group">
-                        <label for="singin-email">{{field.label_tag}}*</label>
-                        {{field}}
-                    
-                    
+                    {% if form.errors %}
+                    <p>Your username and password didn't match. Please try again.</p>
+                    {% endif %}
+                    <div class="form-group" style="padding: 3px;">
+                        <label for="singin-email">{{form.username.label_tag}}*</label>
+                        {{form.username}}
+                        
                     </div><!-- End .form-group -->
-                    {% endfor%}
-
-                    
+                    <div class="form-group" style="padding: 3px;">
+                        <label for="singin-password">{{form.password.label_tag}}*</label>
+                        {{ form.password }}
+                    </div><!-- End .form-group -->
+                            
 
                     <div class="form-footer">
-                        <button type="submit" class="btn btn-outline-primary-2">
+                        <button type="submit" class="btn btn-outline-primary-2" style="width:100%;border-radius:22px;">
                             <span>LOG IN</span>
                             <i class="icon-long-arrow-right"></i>
                         </button>
 
-                        
-                        <a href="#" class="forgot-link">Forgot Your Password?</a>
                     </div><!-- End .form-footer -->
                 </form>
                 <div class="form-choice">
+                    <div class="flex-link">
+                        <div class="flex1">
+                            <a href="#" class="forgot-link">Forgot Your Password?</a>
+                        </div>
+                        <div class="flex2">
+                            <a href="{% url 'Users:Register'%}" class="forgot-link">Register An Account ?</a>
+                        </div>
+                    </div>
+                    
                     <p class="text-center">or sign in with</p>
                     <div class="row">
                         <div class="col-sm-6">

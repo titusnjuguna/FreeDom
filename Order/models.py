@@ -4,7 +4,7 @@ from Shop.models import Product
 # Create your models here.
 PAYMENT_OPTIONS =(
     ('mpesa','MPESA'),
-    ('direct bank transfer','DIRECT BANK TRANSFER'),
+    ('direct bank transfer', 'BANK2BANK'),
     ('cash on delivery','CASH ON DELIVERY'),
     ('paypal','PAYPAL'),
     ('credit card','CREDIT CARD')
