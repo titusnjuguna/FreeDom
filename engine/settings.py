@@ -152,8 +152,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CART_SESSION_ID = 'cart'
 
 load_dotenv()
-LOGIN_URL = 'Login'
+
 LOGIN_REDIRECT_URL='Product_List'
+LOGIN_URL = 'Users:Login'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.getenv("MY_EMAIL")
