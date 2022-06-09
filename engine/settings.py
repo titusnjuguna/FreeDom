@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-6f%wf3uj*mfl+d04=i&@^qnpzqlr@%l(nw%#=hd)!8%-#cnmhv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['freedomall.herokuapp.com',]
 
 # Application definition
 
@@ -147,6 +147,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CART_SESSION_ID = 'cart'
