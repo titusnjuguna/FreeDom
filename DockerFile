@@ -1,8 +1,0 @@
-FROM python:3.8
-WORKDIR /usr/src/app
-COPY ..
-RUN sudo apt-upgrade
-RUN  pip install  --no-cache-dir  -r requirements.txt
-EXPOSE 5000
-#command for running applications
-CMD ["python manage.py", "runserver"]
