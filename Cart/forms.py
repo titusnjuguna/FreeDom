@@ -1,5 +1,5 @@
 from django import forms
-
+#added a comment
 class CartAddForm(forms.Form):
     quantity = forms.IntegerField( required= True,
                          
